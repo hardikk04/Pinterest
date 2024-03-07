@@ -21,23 +21,57 @@
             alt="Profile Picture"
           />
         </div>
-        <h2 class="name">username</h2>
-        <h3 class="username">@username</h3>
-        <p class="tagline">tagline</p>
-        <p class="description">description</p>
-        <a href="#" class="button">Account settings</a>
+        <h2 class="name"><%= user.fullName%></h2>
+        <h3 class="username">@<%= user.username%></h3>
+        <p class="tagline">
+          Lorem ipsum, dolor sit amet consectetur adipisicing.
+        </p>
+        <p class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
+          unde.
+        </p>
+        <a href="/login" class="button">Log out</a>
       </div>
+      <form
+        class="form-container"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="upload-files-container">
+          <div class="drag-file-area">
+            <label class="label">
+              <span class="browse-files">
+                <input type="file" name="file" class="default-file-input" />
+                <span class="browse-files-text">browse file</span>
+                <span>from device</span>
+              </span>
+            </label>
+          </div>
+          <input
+            type="text"
+            class="caption"
+            name="postText"
+            placeholder="Caption"
+          />
+          <button type="submit" class="upload-button">Upload</button>
+        </div>
+      </form>
     </div>
     <div class="container">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://images.unsplash.com/photo-1709667642843-12864d3d78e8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+      <div class="cards">
+        <% user.post.forEach(post=>{ %>
+        <div class="card" style="width: 18rem">
+          <img
+            src="/images/uploads/<%= post.image %>"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= post.postText%></h5>
+          </div>
         </div>
+        <%})%>
       </div>
     </div>
     <script

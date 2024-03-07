@@ -14,7 +14,9 @@
           class="img1"
         />
         <p class="header">Register to see more</p>
-
+        <% if(error.length>0){ %>
+        <p class="error"><%= error %></p>
+        <% } %>
         <form action="/register" method="post">
           <input
             name="username"

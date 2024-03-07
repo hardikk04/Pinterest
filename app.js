@@ -8,9 +8,11 @@ const expressSession = require("express-session");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const passport = require("passport");
+const flash = require("connect-flash");
 
 var app = express();
 
+app.use(flash());
 app.use(
   expressSession({
     resave: false,
